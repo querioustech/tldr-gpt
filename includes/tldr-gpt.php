@@ -5,8 +5,9 @@ function tldrgpt_summarize($post_id, $post){
     $url = "$base_url/chat/completions";
   
     $post_content = wp_strip_all_tags($post->post_content);
-  
-    $token = get_option('tldrgpt-openai-apikey', '');
+    $options = get_option('tldrgpt_settings');
+
+    $token = $options['openai-apikey'] ?? '';
   
     $headers = [
         "Authorization" => "Bearer $token",

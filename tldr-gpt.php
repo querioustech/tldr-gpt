@@ -12,7 +12,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require plugin_dir_path( __FILE__ ) . 'includes/class-tldr-gpt.php';
+require plugin_dir_path( __FILE__ ) . 'includes/tldr-gpt.php';
+require plugin_dir_path( __FILE__ ) . 'admin/tldr-gpt.php';
 
 function tldrgpt_on_save_post($post_id, $post, $update)
 {
@@ -32,4 +33,6 @@ function tldrgpt_on_save_post($post_id, $post, $update)
   }
 }
 
+add_action('admin_menu', 'tldrgpt_add_admin_menu');
+add_action( 'admin_init', 'tldrgpt_settings_init' );
 add_action('save_post_post', 'tldrgpt_on_save_post', 10, 3);
