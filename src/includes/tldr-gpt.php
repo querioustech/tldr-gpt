@@ -28,26 +28,26 @@ function tldrgpt_summarize($post_id, $post){
       "frequency_penalty" => 0
   ];
   
-  // $res = wp_remote_post( $url, array(
-  //     'headers' => $headers,
-  //     'body' => wp_json_encode($payload)
-  //   )
-  // );
+  $res = wp_remote_post( $url, array(
+      'headers' => $headers,
+      'body' => wp_json_encode($payload)
+    )
+  );
   
-  // if ( !is_wp_error( $res )  && wp_remote_retrieve_response_code( $res ) == 200 )
-  // {
-  //   $body = json_decode( wp_remote_retrieve_body( $res ) );
+  if ( !is_wp_error( $res )  && wp_remote_retrieve_response_code( $res ) == 200 )
+  {
+    $body = json_decode( wp_remote_retrieve_body( $res ) );
 
-  //   if ( count($body->choices) > 0 )
-  //   {
-  //     return $body->choices[0]->message->content;
-  //   }
-  // } else 
-  // {
-  //   $error_message = $res->get_error_message();
+    if ( count($body->choices) > 0 )
+    {
+      return $body->choices[0]->message->content;
+    }
+  } else 
+  {
+    $error_message = $res->get_error_message();
 
-  //   error_log($error_message);
-  // }
+    error_log($error_message);
+  }
 
   return false;
   }
