@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 3,
+  "name": "querioustech/tldr-gpt-gutenberg",
+  "title": "TLDR-GPT",
+  "textdomain": "tldrgpt",
+  "icon": "editor-kitchensink",
+  "category": "widgets",
+  "editorScript": "file:./index.js"
+}
